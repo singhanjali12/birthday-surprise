@@ -11,6 +11,7 @@ body {
     text-align: center;
     background: linear-gradient(to right, #ff758c, #ff7eb3);
     color: white;
+    overflow: hidden;
 }
 
 /* Slides */
@@ -28,21 +29,30 @@ body {
 
 /* Button */
 button {
-    padding: 12px 20px;
+    padding: 12px 22px;
     font-size: 18px;
     border: none;
-    border-radius: 10px;
+    border-radius: 12px;
     background: #ff4b5c;
     color: white;
     cursor: pointer;
     margin-top: 20px;
 }
 
-/* Image */
+/* Image animation */
 img {
-    width: 250px;
+    width: 260px;
     border-radius: 20px;
     margin-top: 20px;
+    transform: scale(0);
+    animation: pop 1s ease forwards;
+}
+
+/* Pop animation */
+@keyframes pop {
+    0% { transform: scale(0); }
+    60% { transform: scale(1.2); }
+    100% { transform: scale(1); }
 }
 </style>
 </head>
@@ -52,9 +62,8 @@ img {
 <!-- 🎬 Slide 1 -->
 <div class="slide active" id="slide1">
     <h1>Hey handsome 😘</h1>
-    <p>I heard it's your birthday... 🎂</p>
-    <p>Happy Birthday sexy 💖</p>
-    <h2>Is it your birthday? 😏</h2>
+    <p>I heard it's your birthday 🎂</p>
+    <p>If yes, click below 👇</p>
 
     <button onclick="goNext()">Yes ❤️</button>
 </div>
@@ -63,10 +72,11 @@ img {
 <div class="slide" id="slide2">
     <h1>🎉 Happy Birthday Baby ❤️</h1>
 
+    <!-- Your name -->
+    <h2>- Love, Anjali 💖</h2>
+
     <!-- Replace with his photo -->
     <img src="photo1.jpg" alt="birthday">
-
-    <p>You are my favorite person in the whole world 💕</p>
 
     <!-- Music -->
     <audio id="music" loop>
@@ -79,7 +89,6 @@ function goNext() {
     document.getElementById("slide1").classList.remove("active");
     document.getElementById("slide2").classList.add("active");
 
-    // Play music after click (browser allows this)
     document.getElementById("music").play();
 }
 </script>
